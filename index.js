@@ -1,22 +1,19 @@
 const btnJob = document.getElementById('btn-job');
+const jobForm = document.getElementById('job-form');
 
-btnJob.addEventListener('click', applyToJob);
+jobForm.addEventListener('submit', handleSubmit);
 
-const candidat = {
-  isProgrammer: false,
-  isCool: true,
-};
+const candidat = {};
 
-// function applyToJob() {
-//   console.log('Recruteur - La décision est en cours...');
-//   startDecisionProcess()
-//     .then((result) => {
-//       console.log(result);
-//     })
-//     .catch((err) => {
-//       console.log('err', err);
-//     });
-// }
+function handleSubmit(e) {
+  e.preventDefault();
+  candidat.firstName = jobForm.elements[0].value;
+  candidat.lastName = jobForm.elements[1].value;
+  candidat.isProgrammer = jobForm.elements[2].value === 'dev' ? true : false;
+  candidat.isCool = true;
+  console.log(candidat);
+  applyToJob();
+}
 
 async function applyToJob() {
   console.log('Recruteur - La décision est en cours...');

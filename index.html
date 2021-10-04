@@ -9,6 +9,17 @@
   </head>
   <body>
     <h1>Candidature</h1>
-    <button id="btn-job">postuler</button>
+    <form id="job-form">
+      <input type="text" id="first-name" placeholder="Votre prénom" /><br />
+      <input type="text" id="last-name" placeholder="Votre nom" /><br />
+      <select id="occupation">
+        <option value="">profession</option>
+        <option value="dev">développeur</option>
+        <option value="other">autre</option>
+      </select>
+      <br>
+      <button type="submit" id="btn-job">postuler</button>
+    </form>
+    <br />
   </body>
 </html>
