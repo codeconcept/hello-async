@@ -3,19 +3,29 @@ const btnJob = document.getElementById('btn-job');
 btnJob.addEventListener('click', applyToJob);
 
 const candidat = {
-  isProgrammer: true,
+  isProgrammer: false,
   isCool: true,
 };
 
-function applyToJob() {
+// function applyToJob() {
+//   console.log('Recruteur - La décision est en cours...');
+//   startDecisionProcess()
+//     .then((result) => {
+//       console.log(result);
+//     })
+//     .catch((err) => {
+//       console.log('err', err);
+//     });
+// }
+
+async function applyToJob() {
   console.log('Recruteur - La décision est en cours...');
-  startDecisionProcess()
-    .then((result) => {
-      console.log(result);
-    })
-    .catch((err) => {
-      console.log('err', err);
-    });
+  try {
+    const result = await startDecisionProcess();
+    console.log('result', result);
+  } catch (err) {
+    console.log('err', err);
+  }
 }
 
 function startDecisionProcess() {
@@ -26,7 +36,7 @@ function startDecisionProcess() {
         resolve('Recruteur - Bienvenue dans notre entreprise !');
       } else {
         reject(
-          `Recruteur - Malgré tout l'intérêt de votre candidatur, nous somme au regret de bla bla`
+          `Recruteur - Malgré tout l'intérêt de votre candidature, nous sommes au regret de bla bla`
         );
       }
     }, 2000);
