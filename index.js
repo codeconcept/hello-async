@@ -9,8 +9,13 @@ const candidat = {
 
 function applyToJob() {
   console.log('Recruteur - La décision est en cours...');
-  const result = startDecisionProcess();
-  console.log('result', result);
+  startDecisionProcess()
+    .then((result) => {
+      console.log(result);
+    })
+    .catch((err) => {
+      console.log('err', err);
+    });
 }
 
 function startDecisionProcess() {
@@ -29,3 +34,4 @@ function startDecisionProcess() {
 }
 
 console.log('Après la fonction applyToJob');
+console.log(`Je réponds à d'autres annonces`);
