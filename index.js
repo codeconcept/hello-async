@@ -46,13 +46,27 @@ function startDecisionProcess() {
 console.log('Après la fonction applyToJob');
 console.log(`Je réponds à d'autres annonces`);
 
-function searchGithub(e) {
+// function searchGithub(e) {
+//   e.preventDefault();
+//   const account = githubForm.elements[0].value;
+//   fetch(`https://api.github.com/users/${account}`)
+//     .then((data) => data.json())
+//     .then((data) => {
+//       console.log(data);
+//       githubResult.innerHTML = `<pre><code>${JSON.stringify(data, null, 4)}</code></pre>`;
+//     });
+// }
+
+async function searchGithub(e) {
   e.preventDefault();
   const account = githubForm.elements[0].value;
-  fetch(`https://api.github.com/users/${account}`)
-    .then((data) => data.json())
-    .then((data) => {
-      console.log(data);
-      githubResult.innerHTML = `<pre><code>${JSON.stringify(data, null, 4)}</code></pre>`;
-    });
+  const data = await fetch(`https://api.github.com/users/${account}`);
+  console.log('data', data);
+  const jsonData = await data.json();
+  console.log('jsonData', jsonData);
+  githubResult.innerHTML = `<pre><code>${JSON.stringify(
+    jsonData,
+    null,
+    4
+  )}</code></pre>`;
 }
