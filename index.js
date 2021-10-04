@@ -1,7 +1,10 @@
 const btnJob = document.getElementById('btn-job');
 const jobForm = document.getElementById('job-form');
+const githubForm = document.getElementById('github-form');
+const githubResult = document.getElementById('github-result');
 
 jobForm.addEventListener('submit', handleSubmit);
+githubForm.addEventListener('submit', searchGithub);
 
 const candidat = {};
 
@@ -42,3 +45,11 @@ function startDecisionProcess() {
 
 console.log('Après la fonction applyToJob');
 console.log(`Je réponds à d'autres annonces`);
+
+function searchGithub(e) {
+  e.preventDefault();
+  const account = githubForm.elements[0].value;
+  fetch(`https://api.github.com/users/${account}`).then((data) => {
+    console.log(data);
+  });
+}
